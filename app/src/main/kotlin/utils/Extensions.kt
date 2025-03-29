@@ -1,0 +1,1 @@
+inline fun <reified T> Map<String, Any>.getTypedValue(key: String): T? = this[key] as? T
