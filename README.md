@@ -26,7 +26,7 @@ Whenever we need to download the original file, we can simply fetch the chunks u
 
 For example, if we want to upload a 32-megabyte file, we will split the file into 8-megabyte chunks. In this case, we would have four chunks. To upload them, we have to send four http requests. Each chunk will be tracked by a message ID.
 
-So, for a 32-megabyte file, four message IDs will be stored. The metadata we store for this approach would look something like this:
+So, for a 32-megabyte file, four message IDs will be stored. The metadata we store for this approach would look something like this if we upload two files:
 
 ```json
 [
@@ -47,7 +47,7 @@ So, for a 32-megabyte file, four message IDs will be stored. The metadata we sto
 With this approach, we can store very huge files and there's no limit. It can go upto 1 tb.
 
 
-The issue with the this approach is that it is designed to handle only one file at a time. What if we want to upload a folder containing hundereds of files? If we rely on this approach, we may have to send hundereds of requests just to upload a small amount of data. Which is very inefficient.
+The issue with this approach is that it is designed to handle only one file at a time. What if we want to upload a folder containing hundereds of files? If we rely on this approach, we may have to send hundereds of requests just to upload a small amount of data. Which is very inefficient.
 
 For example, let's say I have a folder containing 200 files where the size of each file is 2-kilobyte. The total folder size would be 400 kilobytes. Using the this approach, we would have to send 200 requests just to upload 400 kilobytes of data. This is not only inefficient but could also abuse the API.
 
@@ -216,7 +216,7 @@ This tool uses a discord bot to upload the data. I've tried using the webhook bu
 
 **Upload (upload)**
 
-The upload command is used to upload a file or a folder. IT takes a path to a file or a folder and upload it on discord.
+The upload command is used to upload a file or a folder. It takes a path to a file or a folder and upload it on discord.
 
 **Download (download)**
 
@@ -244,9 +244,9 @@ The set-channel-id command is used to set the channel id where our data will be 
 
 ## Usage
 
-First, click [here](https://github.com/HARUM1122/disdrive-cli/releases/tag/disdrive) and download **disdrive.rar** and extract it to a separate folder. Then launch the **app.exe** and run the **set-token** command to set the token of the discord bot you want to use. `set-token YOUR-TOKEN`
+First, click [here](https://github.com/HARUM1122/disdrive-cli/releases/tag/disdrive) and download **disdrive.rar** and extract it to a separate folder. Then launch the **app.exe** and run the **set-token** command to set the token of the discord bot you want to use: `set-token YOUR-TOKEN`
 
-After that, create a private server and copy the id of a text channel where you want your data to be uploaded. `set-channel-id YOUR_CHANNEL_ID`
+After that, create a private server and copy the id of a text channel where you want your data to be uploaded. Run **set-channel-id** command to set the id you copied: `set-channel-id YOUR_CHANNEL_ID`
 
 Now you can upload and download files or folders.
 
